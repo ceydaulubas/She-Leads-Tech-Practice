@@ -7,10 +7,24 @@
  * Hint: As you read each letter, which earlier letter could now become its neighbor?
  */
 export function removeDuplicates(s: string): string {
-  throw new Error("TODO: implement removeDuplicates");
+  const stack: string[] = [];
+
+  for (const letter of s) {
+    if (stack.length > 0 && letter === stack[stack.length - 1]) {
+      stack.pop();
+    } else {
+      stack.push(letter);
+    }
+  }
+  return stack.join('');
 }
+
+console.log(removeDuplicates('abbaca')); // "ca"
 
 // Remove the block comment after implementing the starter to run this example.
 /*
 console.log(removeDuplicates("abbaca")); // "ca"
+
+abbaca -> aaca -> ca
+
 */
